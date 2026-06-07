@@ -8,6 +8,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }} # This will be "username/repo-name"
+  N8N_REGISTRY: docker.n8n.io
 
 jobs:
   build-and-push:
@@ -26,6 +27,13 @@ jobs:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Log in to n8n Docker registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.N8N_REGISTRY }}
+          username: ${{ secrets.N8N_REGISTRY_USERNAME }}
+          password: ${{ secrets.N8N_REGISTRY_PASSWORD }}
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
