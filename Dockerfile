@@ -1,7 +1,7 @@
 FROM alpine:3.22 AS alpine-tools
 
 # 2. Use your exact n8n version
-FROM docker.io/n8nio/n8n:2.25.5
+FROM docker.io/n8nio/n8n:2.43.4
 
 USER root
 
