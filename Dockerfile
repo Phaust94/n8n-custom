@@ -9,6 +9,6 @@ USER root
 # /etc/apk (repos) or /lib/apk (installed DB) from the n8n base image.
 COPY --from=alpine-tools /sbin/apk /sbin/apk
 COPY --from=alpine-tools /usr/lib/libapk.so.3.0.0 /usr/lib/libapk.so.3.0.0
-RUN apk add --no-cache ffmpeg
+RUN apk add --no-cache ffmpeg python3 py3-pip
 # Match the original user if necessary (e.g., USER node)
 USER node
